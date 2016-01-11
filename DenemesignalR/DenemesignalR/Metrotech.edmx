@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SiignalRenemeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_Musteri">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Musteriad" Type="nvarchar" MaxLength="50" />
+          <Property Name="lat" Type="nvarchar" MaxLength="50" />
+          <Property Name="lang" Type="nchar" MaxLength="10" />
+          <Property Name="Sehir" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tbl_Sayac">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SayacNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="MusteriId" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_SayacHata">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HataAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="HataTür" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_SayacHataLog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SayacId" Type="int" />
+          <Property Name="Hataid" Type="int" />
+          <Property Name="Tarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdSoyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Function Name="callWebServices" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sayacid" Type="int" Mode="In" />
+          <Parameter Name="tarih" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="fnc_HataAd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fnc_HataTur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fnc_MusteriAd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fnc_MusteriId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fnc_MusteriLan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fnc_MusteriLat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fnc_MusteriSehir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fnc_SayacNo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sayacHata" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sayacHataIdProp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="SiignalRenemeModelStoreContainer">
+          <EntitySet Name="tbl_Musteri" EntityType="Self.tbl_Musteri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Sayac" EntityType="Self.tbl_Sayac" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_SayacHata" EntityType="Self.tbl_SayacHata" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_SayacHataLog" EntityType="Self.tbl_SayacHataLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Users" EntityType="Self.tbl_Users" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SiignalRenemeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_Musteri">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Musteriad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lang" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Sehir" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_Sayac">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SayacNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MusteriId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_SayacHata">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HataAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HataTür" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_SayacHataLog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SayacId" Type="Int32" />
+          <Property Name="Hataid" Type="Int32" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="SignalRDenemeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Musteri" EntityType="Self.tbl_Musteri" />
+          <EntitySet Name="tbl_Sayac" EntityType="Self.tbl_Sayac" />
+          <EntitySet Name="tbl_SayacHata" EntityType="Self.tbl_SayacHata" />
+          <EntitySet Name="tbl_SayacHataLog" EntityType="Self.tbl_SayacHataLog" />
+          <EntitySet Name="tbl_Users" EntityType="Self.tbl_Users" />
+          <FunctionImport Name="callWebServices" ReturnType="Collection(String)">
+            <Parameter Name="sayacid" Mode="In" Type="Int32" />
+            <Parameter Name="tarih" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sayacHata" ReturnType="Collection(SiignalRenemeModel.sayacHata_Result)" />
+          <FunctionImport Name="sayacHataIdProp" ReturnType="Collection(SiignalRenemeModel.sayacHataIdProp_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sayacHata_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="SayacNO" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Tarih" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Musteri" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Sehir" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Lat" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Lan" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="sayacHataIdProp_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="SayacNO" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Tarih" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Musteri" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Sehir" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Lat" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Lan" Nullable="true" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SiignalRenemeModelStoreContainer" CdmEntityContainer="SignalRDenemeEntities">
+          <EntitySetMapping Name="tbl_Musteri">
+            <EntityTypeMapping TypeName="SiignalRenemeModel.tbl_Musteri">
+              <MappingFragment StoreEntitySet="tbl_Musteri">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Musteriad" ColumnName="Musteriad" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="lang" ColumnName="lang" />
+                <ScalarProperty Name="Sehir" ColumnName="Sehir" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Sayac">
+            <EntityTypeMapping TypeName="SiignalRenemeModel.tbl_Sayac">
+              <MappingFragment StoreEntitySet="tbl_Sayac">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="SayacNo" ColumnName="SayacNo" />
+                <ScalarProperty Name="MusteriId" ColumnName="MusteriId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SayacHata">
+            <EntityTypeMapping TypeName="SiignalRenemeModel.tbl_SayacHata">
+              <MappingFragment StoreEntitySet="tbl_SayacHata">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="HataAd" ColumnName="HataAd" />
+                <ScalarProperty Name="HataTür" ColumnName="HataTür" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SayacHataLog">
+            <EntityTypeMapping TypeName="SiignalRenemeModel.tbl_SayacHataLog">
+              <MappingFragment StoreEntitySet="tbl_SayacHataLog">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="SayacId" ColumnName="SayacId" />
+                <ScalarProperty Name="Hataid" ColumnName="Hataid" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Users">
+            <EntityTypeMapping TypeName="SiignalRenemeModel.tbl_Users">
+              <MappingFragment StoreEntitySet="tbl_Users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="callWebServices" FunctionName="SiignalRenemeModel.Store.callWebServices" />
+          <FunctionImportMapping FunctionImportName="sayacHata" FunctionName="SiignalRenemeModel.Store.sayacHata">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SiignalRenemeModel.sayacHata_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SayacNO" ColumnName="SayacNO" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Musteri" ColumnName="Musteri" />
+                <ScalarProperty Name="Sehir" ColumnName="Sehir" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Lan" ColumnName="Lan" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sayacHataIdProp" FunctionName="SiignalRenemeModel.Store.sayacHataIdProp">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SiignalRenemeModel.sayacHataIdProp_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SayacNO" ColumnName="SayacNO" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Musteri" ColumnName="Musteri" />
+                <ScalarProperty Name="Sehir" ColumnName="Sehir" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Lan" ColumnName="Lan" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+
+<div class="content">
+    <!-- BEGIN LOGIN FORM -->
+    @using (Html.BeginForm("Login", "Giris", FormMethod.Post))
+    {
+        <h3 class="form-title font-green">Giriş</h3>
+        <div class="alert alert-danger display-hide">
+            <button class="close" data-close="alert"></button>
+            <span> Kullanıcı Adı ve Şifrenizi Giriniz.  </span>
+        </div>
+        <div class="form-group">
+            <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+            <label class="control-label visible-ie8 visible-ie9">Username</label>
+            <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Kullanıcı Adı" name="Kad" />
+        </div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">Password</label>
+            <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="Sifre" />
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn green uppercase">Giriş</button>
+
+        </div>
+
+    }
+    <!-- END LOGIN FORM -->
+
+
+</div>

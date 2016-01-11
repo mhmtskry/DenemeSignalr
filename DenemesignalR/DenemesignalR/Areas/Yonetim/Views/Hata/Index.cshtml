@@ -1,0 +1,63 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/angular.min.js"></script>
+   <script src="~/Scripts/jquery-2.2.0.min.js"></script>
+    <script src="@Url.Content("~/Scripts/jquery.signalR-2.1.1.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/signalr/hubs")"></script>
+    <script>
+        function Controller($scope) {
+            var messagehub = $.connection.gamesHub;
+
+            messagehub.client.getAllProduct = function (data) {
+                $scope.Games = data;
+                $scope.$apply();
+            }
+
+            messagehub.client.refreshData = function (data) {
+                console.log(JSON.stringify(data));
+                updateDataFromID(data[0].ID, $scope.Games, data[0]);
+                $scope.$apply();
+            }
+            $.connection.hub.qs = { isWebUser: true };
+            $.connection.hub.start();
+        }
+        function updateDataFromID(ID, Array, Game) {
+            console.log("ID="+ID);
+            for (var index = 0; index < Array.length; index++)
+            {
+                if (Array[index].ID == ID)
+                {
+                    Array[index] = Game;
+                    console.log("Game Found " + index);
+                }
+            }
+        }
+        
+        //Hocam boxSizing yaptığınızda  Güncellenen kayıtlar gösteriliyordu ben ise tabloya yani eklenen kaydı göstermek istiyorum saygılar.. 
+    </script>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div id="gamesContent" ng-app="" ng-controller="Controller">
+        <table>
+            <tr>
+                <td style="padding: 10px" ng-repeat="item in Games">
+                    <div><b>[{{item.Id}}] {{item.SayacNo}}</b></div>
+                    <div><b> {{item.Musteri}}</b></div>
+                    <div><b> {{item.Sehir}}</b></div>
+                    <div><h4><b><font color="red">{{item.Tarih}}</font></b></h4></div>
+                    <div><input type='button' value='Buy' class='btnClass' /></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
