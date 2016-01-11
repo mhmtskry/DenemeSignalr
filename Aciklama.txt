@@ -1,0 +1,13 @@
+Hocam projede 2 farklý database kullandýðýmda ve sizi uðraþtýrmamasý açýsýndan makalenizde projemi kullanmak istediðim sayfalarý tekrar kodladým.Þuan çalýþýr vaziyette fakat tble bilgi giriþi olduðunda bir deðiþiklik olmuyor. 
+
+hocam Sayachatalog Tablosuna kayýt ekendiðinde anlýk olarak eklenen kaydý göstermek istiyorum. yazým hatalarý için þimdiden özür dilerim .
+
+Hocam Databese first Kullanýyorum.Bak dosyasýný ekledim tüm procedureler ve makalenizde yaptýðýnýz iþlemleri databasede olarak yaptým.
+
+benim projemin aslý deðil ama çelýþmasý gereken kýsmýný aynen tekrar kodladým hocam.
+giriþ için Yonetim/Giris
+Kullanýcý Adý:borakasmer@gmail.com - mahmutsakarya@gmail.com
+Þifre:123456
+iki kullanýcý tanýmladým
+
+Yardýmlarýnýz için Çok Teþekkürler.Saydýlarýmla
